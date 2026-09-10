@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Fictional lifecycle audit interface</title>
+  <desc id="desc">A brand-neutral lifecycle marketing mockup with fictional data only.</desc>
+  <rect width="1440" height="900" fill="#f5f1e8"/>
+  <rect x="42" y="34" width="1356" height="72" rx="12" fill="#fffdfa" stroke="#d7d1c5"/>
+  <text x="76" y="80" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#12372f">Growth Intelligence Demo</text>
+  <text x="1102" y="78" font-family="Arial, sans-serif" font-size="16" fill="#49625c">LIFECYCLE AUDIT</text>
+  <rect x="42" y="132" width="930" height="322" rx="18" fill="#0e382f"/>
+  <text x="82" y="190" font-family="Arial, sans-serif" font-size="16" letter-spacing="2" fill="#ef8c68">PERMITTED EVIDENCE ONLY</text>
+  <text x="82" y="264" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#fffdfa">Lifecycle Audit</text>
+  <text x="82" y="315" font-family="Arial, sans-serif" font-size="22" fill="#d7e2de">Evaluate onboarding, activation, adoption, and upgrade</text>
+  <text x="82" y="348" font-family="Arial, sans-serif" font-size="22" fill="#d7e2de">messaging without inventing behavior or automating signups.</text>
+  <text x="82" y="406" font-family="Arial, sans-serif" font-size="17" fill="#fffdfa">Evidence first   •   Human-led research   •   Actionable insights</text>
+  <rect x="996" y="132" width="402" height="322" rx="18" fill="#214e43"/>
+  <text x="1030" y="190" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#fffdfa">Safety mode active</text>
+  <text x="1030" y="248" font-family="Arial, sans-serif" font-size="18" fill="#d7e2de">✓ No automated signups</text>
+  <text x="1030" y="292" font-family="Arial, sans-serif" font-size="18" fill="#d7e2de">✓ Human-led research only</text>
+  <text x="1030" y="336" font-family="Arial, sans-serif" font-size="18" fill="#d7e2de">✓ Separate, verifiable evidence</text>
+  <text x="1030" y="380" font-family="Arial, sans-serif" font-size="18" fill="#d7e2de">✓ Fictional portfolio data</text>
+  <rect x="42" y="482" width="1356" height="150" rx="14" fill="#fffdfa" stroke="#d7d1c5"/>
+  <text x="72" y="526" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#12372f">Prepare research session</text>
+  <text x="72" y="568" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#49625c">COMPANY</text>
+  <text x="72" y="603" font-family="Arial, sans-serif" font-size="18" fill="#12372f">Acme</text>
+  <text x="390" y="568" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#49625c">WEBSITE</text>
+  <text x="390" y="603" font-family="Arial, sans-serif" font-size="18" fill="#12372f">acme.example</text>
+  <text x="746" y="568" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#49625c">OBSERVATION DAYS</text>
+  <text x="746" y="603" font-family="Arial, sans-serif" font-size="18" fill="#12372f">14</text>
+  <rect x="1110" y="536" width="244" height="64" rx="8" fill="#ef8c68"/>
+  <text x="1166" y="576" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#102f28">Create session</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="42" y="658" width="418" height="184" rx="12" fill="#fffdfa" stroke="#d7d1c5"/>
+    <text x="72" y="704" font-size="18" font-weight="700" fill="#12372f">Journey coverage</text>
+    <text x="72" y="750" font-size="17" fill="#49625c">Welcome → Activation → Adoption</text>
+    <text x="72" y="788" font-size="17" fill="#49625c">Upgrade → Retention</text>
+    <rect x="482" y="658" width="418" height="184" rx="12" fill="#fffdfa" stroke="#d7d1c5"/>
+    <text x="512" y="704" font-size="18" font-weight="700" fill="#12372f">Analysis dimensions</text>
+    <text x="512" y="750" font-size="17" fill="#49625c">Value communication • Timing</text>
+    <text x="512" y="788" font-size="17" fill="#49625c">Relevance • Conversion readiness</text>
+    <rect x="922" y="658" width="476" height="184" rx="12" fill="#fffdfa" stroke="#d7d1c5"/>
+    <text x="952" y="704" font-size="18" font-weight="700" fill="#12372f">Executive output</text>
+    <text x="952" y="750" font-size="17" fill="#49625c">Growth levers, priority actions,</text>
+    <text x="952" y="788" font-size="17" fill="#49625c">and a measurement-ready brief.</text>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+[project]
+name = "marketing-auditor-browser"
+version = "0.1.0"
+description = "Guarded Browser Use companion for future intelligent marketing-flow inspection."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "browser-use",
+  "python-dotenv",
+]
+
+[project.scripts]
+marketing-auditor-browser = "marketing_auditor_browser.main:cli"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/marketing_auditor_browser"]
