@@ -58,7 +58,7 @@ The public prototype uses Next.js for the interface and APIs, Playwright for det
 
 ## Current status
 
-Working portfolio prototype. The public repository includes the website-audit and competitor-research engine plus a fictional lifecycle product concept. Live integrations, authentication handlers, deployment instructions, persistence schemas, client data, and generated audit evidence are intentionally excluded from this recruiter-facing version.
+Working public prototype. The repository includes the website-audit and competitor-research engine plus a fictional lifecycle product concept. Live integrations, authentication handlers, deployment instructions, persistence schemas, client data, and generated audit evidence are intentionally excluded from this public version.
 
 ## Run locally
 
