@@ -1,92 +1,160 @@
 # AI Growth Intelligence Auditor
 
-**Turn a company’s public website and lifecycle journey into an evidence-backed growth brief.**
+**Turn a public website into an evidence-backed brief for positioning, conversion, SEO, and competitive decisions.**
 
-This working prototype helps a growth leader move from “we should improve the funnel” to a prioritized set of decisions. It samples the right pages, captures source evidence, researches competitors, evaluates free-to-paid messaging, and keeps observations separate from hypotheses and recommendations.
+The auditor gives a growth team one place to inspect what a company says, how visitors are guided toward conversion, and how that story compares with the market. It collects the evidence first, then uses structured AI analysis to turn that evidence into prioritized decisions.
 
-![Growth audit interface](assets/growth-audit-demo.svg)
+![The actual Growth Intelligence Auditor interface running locally](assets/ai-growth-auditor-live.jpg)
 
-## The marketing problem
+_Actual application screen. No client, employer, or private account data is shown._
 
-Website, positioning, SEO, competitive, and lifecycle reviews are often performed in separate documents by separate teams. That makes it hard to see how a weak promise on the homepage carries through to signup, onboarding, product adoption, and upgrade messaging.
+## What it does
 
-This system creates one connected view of the growth journey:
+Give the application a public company URL and it will:
 
-| Question | What the system produces |
-|---|---|
-| Is the value proposition clear? | Cited positioning and messaging observations |
-| Can a qualified visitor find the next step? | CTA and conversion-path evidence |
-| Where can the company become more discoverable? | SEO and answer-engine opportunity analysis |
-| How does the market frame the problem? | Source-backed competitor profiles and a positioning matrix |
-| Does lifecycle messaging create upgrade intent? | Lifecycle and free-to-paid scores with growth levers |
-| What should leadership do first? | Prioritized risks, decisions, and 90-day tests |
+1. Validate that the destination is a safe, public web address.
+2. Inspect the homepage and select a bounded sample of relevant product, pricing, solution, customer, resource, and company pages.
+3. Capture page titles, headings, hero copy, CTAs, forms, proof statements, SEO signals, links, and screenshots.
+4. Assign stable evidence IDs to the observations.
+5. Optionally use the OpenAI API to score positioning, website/CRO, and SEO against that evidence.
+6. Optionally research competitors and preserve the public sources behind the comparison.
+7. Return a readable dashboard and downloadable structured JSON.
 
-## What I built
+The central design rule is simple: **observed evidence, hypotheses, and recommendations are different things.** Recommendations must cite the evidence that supports them.
 
-- **Evidence-first website audit:** bounded, read-only crawling of representative product, pricing, solution, customer, resource, and company pages.
-- **Structured AI analysis:** scores and recommendations must reference captured evidence IDs instead of inventing support.
-- **Competitive intelligence:** web research is stored with the sources consulted, then synthesized into competitor profiles, strategic whitespace, and battlecard starters.
-- **Lifecycle audit concept:** the product design shows how permitted evidence can be translated into onboarding, adoption, upsell, and conversion insights.
-- **Executive output:** the detailed dashboard is complemented by a focused two-page PDF built around commercial diagnosis, opportunities, tests, and measurement.
-- **Safety boundaries:** no form submission, account creation, purchases, CAPTCHA bypass, or automated phone verification.
+## What works today
 
-![Lifecycle audit interface](assets/lifecycle-audit-demo.svg)
+| Capability | Status | Output |
+|---|---|---|
+| Safe public-URL validation | Implemented | Blocks private-network and unsafe targets |
+| Bounded website crawl | Implemented | Up to 8 representative pages |
+| Marketing evidence extraction | Implemented | Messaging, CTAs, forms, proof, SEO, and link signals |
+| Screenshot capture | Implemented | Full-page evidence saved with each audit |
+| Structured AI analysis | Implemented; API key required | Scores, hypotheses, and prioritized recommendations |
+| Competitive web research | Implemented; API key required | Competitor profiles, positioning matrix, sources, and battlecard starters |
+| JSON export | Implemented | Complete audit result for further analysis |
+| Lifecycle email analysis | Product concept | Demonstrated separately with fictional data; not connected to this public app |
 
-## How it works
+## What the output looks like
+
+The base application can collect evidence without an AI key. The screen below is a real run against `example.com`; it shows the page sample and observed evidence while clearly identifying that AI analysis is not configured.
+
+![A real evidence-collection result from the Growth Intelligence Auditor](assets/ai-growth-audit-results-live.jpg)
+
+With `OPENAI_API_KEY` configured, the same result view also includes:
+
+- A concise executive summary
+- Positioning, website/CRO, and SEO scores
+- Evidence-linked hypotheses
+- Prioritized recommendations ranked by impact and effort
+- Competitor profiles and a positioning matrix
+- Strategic whitespace and 90-day actions
+- Public source links for externally researched claims
+
+## How the workflow is protected
 
 ```mermaid
 flowchart LR
-    A[Company URL] --> B[Bounded page selection]
-    B --> C[Read-only browser inspection]
-    C --> D[Evidence objects + screenshots]
+    A[Public company URL] --> B[URL and network safety checks]
+    B --> C[Bounded read-only crawl]
+    C --> D[Evidence objects and screenshots]
     D --> E[Structured AI analysis]
-    F[Source-backed competitor research] --> E
-    G[Permitted lifecycle emails] --> H[Free-to-paid analysis]
-    E --> I[Prioritized growth brief]
-    H --> I
-    I --> J[Executive PDF]
+    D --> F[Source-backed competitor research]
+    E --> G[Prioritized growth brief]
+    F --> G
+    G --> H[Dashboard and JSON export]
 ```
 
-The public prototype uses Next.js for the interface and APIs, Playwright for deterministic inspection, and OpenAI for structured analysis and research.
+- Browser traffic is limited to `GET`, `HEAD`, and `OPTIONS` requests.
+- WebSocket connections and private-network destinations are blocked.
+- The crawler does not submit forms, create accounts, make purchases, or bypass CAPTCHAs.
+- AI outputs are checked against known evidence and source IDs.
+- OpenAI responses are requested with storage disabled.
 
-## Product principles
+## Install and run
 
-1. **Evidence before recommendations.** Every major claim should trace back to a captured page, email, or cited research source.
-2. **Business impact before jargon.** Findings connect to acquisition, conversion, activation, expansion, or sales enablement.
-3. **Humans own consequential actions.** The tool diagnoses and recommends; it does not register accounts, send messages, or make purchases.
-4. **Executive clarity and operator depth.** Leaders get a tight decision brief while practitioners retain the underlying evidence.
+### Requirements
 
-## Current status
+- Node.js 22 or newer
+- pnpm 11 or newer
+- Chromium installed through Playwright
+- Optional: an OpenAI API key for scoring, recommendations, and competitor research
 
-Working public prototype. The repository includes the website-audit and competitor-research engine plus a fictional lifecycle product concept. Live integrations, authentication handlers, deployment instructions, persistence schemas, client data, and generated audit evidence are intentionally excluded from this public version.
+### 1. Clone the project
 
-## Run locally
+```bash
+git clone https://github.com/Jlopez-nava/ai-growth-intelligence-auditor.git
+cd ai-growth-intelligence-auditor
+```
 
-Requirements: Node.js 22+, pnpm, and Chromium for Playwright.
+### 2. Install the application and browser
 
 ```bash
 pnpm install
 pnpm playwright:install
+```
+
+### 3. Configure the optional AI analysis
+
+```bash
 cp .env.example .env.local
+```
+
+Open `.env.local` and add your own server-side key:
+
+```dotenv
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-5.6-terra
+```
+
+Never commit `.env.local`. The OpenAI client reads the key only on the server. See the [official Responses API documentation](https://developers.openai.com/api/reference/typescript/resources/responses/methods/create) for the API used by this project.
+
+You can leave the key blank if you only want to test the crawler and evidence extraction.
+
+### 4. Start the application
+
+```bash
 pnpm dev
 ```
 
-Open `http://localhost:3000`. The audit can collect browser evidence without AI configured; an API key enables structured analysis.
+Open [http://localhost:3000](http://localhost:3000), enter a public website, and select **Run full website audit**.
+
+Each run is saved under `artifacts/<audit-id>/` with a `result.json` file and the captured page screenshots. The entire `artifacts` directory is ignored by Git.
+
+## Build and verify
 
 ```bash
-pnpm lint
 pnpm typecheck
+pnpm lint
 pnpm test
+pnpm build
 ```
 
-## Privacy and security
+For a production preview:
 
-- Secrets stay in ignored local environment files; only empty examples are included.
-- Optional AI credentials are server-only.
-- Saved screenshots and audit outputs are ignored by Git.
-- Live lifecycle data and mailbox integrations are excluded from this public version.
-- The repository contains demo screenshots only—no client or employer data.
+```bash
+pnpm start
+```
+
+Run `pnpm build` before `pnpm start`.
+
+## Project map
+
+```text
+src/app/                        Application interface and audit API
+src/lib/audit/                  URL safety, crawl selection, and evidence extraction
+src/lib/openai/                 Structured analysis and competitor research
+tests/                          URL, crawl, extraction, and audit tests
+browser-use-service/            Optional experimental browser companion
+assets/                         Real application screenshots and design references
+```
+
+The optional Python browser companion is deliberately separate from the request path. The main application uses deterministic Playwright extraction because it is easier to constrain, test, and audit.
+
+## Public-project boundaries
+
+This repository contains the working website-audit and competitor-research engine. It intentionally excludes authentication handlers, persistence schemas, deployment configuration, client data, private audit evidence, and mailbox integrations. The lifecycle experience is presented as a separate fictional product concept rather than as an implemented public integration.
 
 ## Stack
 
-`Next.js` · `TypeScript` · `React` · `Playwright` · `OpenAI API` · `Zod`
+`Next.js` · `TypeScript` · `React` · `Playwright` · `OpenAI Responses API` · `Zod`
