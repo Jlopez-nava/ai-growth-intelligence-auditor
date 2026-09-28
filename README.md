@@ -1,12 +1,28 @@
-# AI Growth Intelligence Auditor
+# SubGrowth Digital — Growth Intelligence Auditor
 
 **Turn a public website into an evidence-backed brief for positioning, conversion, SEO, and competitive decisions.**
 
 The auditor gives a growth team one place to inspect what a company says, how visitors are guided toward conversion, and how that story compares with the market. It collects the evidence first, then uses structured AI analysis to turn that evidence into prioritized decisions.
 
-![The actual Growth Intelligence Auditor interface running locally](assets/ai-growth-auditor-live.jpg)
+![Current SubGrowth Digital website audit interface](docs/screenshots/website-audit.png)
 
-_Actual application screen. No client, employer, or private account data is shown._
+_Actual local interface captured September 27, 2026. Saved audit history is hidden for privacy. The lifecycle link shown belongs to the full local product; the public source distribution remains website-audit only._
+
+## What's changed in the full product
+
+The full local application has evolved beyond website audits:
+
+- Read-only Gmail research ingestion with company association, chronological sequences, and duplicate prevention.
+- Historical screenshot uploads: scan and grade up to eight emails at a time, with grouped screenshots for long messages and individual retry states.
+- Evidence-backed lifecycle scores, free-to-paid readiness, and CEO/CMO/lifecycle-director briefs focused on growth, conversion, upsell, and feature adoption.
+- Safe email previews and concise, branded executive PDF exports.
+- A redesigned workspace with Overview, Emails, and Detailed analysis tabs, simpler setup, explicit upload destinations, and mobile layouts.
+
+See the [consolidated product changelog](CHANGELOG.md), [workflow and scoring guide](docs/product-guide.md), and [new screenshot gallery](docs/screenshots/README.md).
+
+**Distribution boundary:** these lifecycle capabilities work in the full local application. This documentation update does not publish their implementation, authentication handlers, mailbox integration, or persistence schemas. Cloning this public repository still provides the website and competitor-audit engine.
+
+![Current batch email upload interface, destination masked](docs/screenshots/lifecycle-upload.png)
 
 ## What it does
 
@@ -33,13 +49,11 @@ The central design rule is simple: **observed evidence, hypotheses, and recommen
 | Structured AI analysis | Implemented; API key required | Scores, hypotheses, and prioritized recommendations |
 | Competitive web research | Implemented; API key required | Competitor profiles, positioning matrix, sources, and battlecard starters |
 | JSON export | Implemented | Complete audit result for further analysis |
-| Lifecycle email analysis | Product concept | Demonstrated separately with fictional data; not connected to this public app |
+| Lifecycle email analysis and screenshot grading | Implemented in the full local app; not distributed here | Documented scores, sequence analysis, executive briefs, and PDF export |
 
 ## What the output looks like
 
-The base application can collect evidence without an AI key. The screen below is a real run against `example.com`; it shows the page sample and observed evidence while clearly identifying that AI analysis is not configured.
-
-![A real evidence-collection result from the Growth Intelligence Auditor](assets/ai-growth-audit-results-live.jpg)
+The base application can collect evidence without an AI key. An [earlier evidence-only example](assets/ai-growth-audit-results-live.jpg) shows a real run against `example.com`, with the page sample and observed evidence while AI analysis is not configured. For current UI captures, see the [updated gallery](docs/screenshots/README.md).
 
 With `OPENAI_API_KEY` configured, the same result view also includes:
 
@@ -146,14 +160,16 @@ src/lib/audit/                  URL safety, crawl selection, and evidence extrac
 src/lib/openai/                 Structured analysis and competitor research
 tests/                          URL, crawl, extraction, and audit tests
 browser-use-service/            Optional experimental browser companion
-assets/                         Real application screenshots and design references
+assets/                         Historical screenshots and design references
+docs/                           Current product guide and privacy-safe screenshots
+CHANGELOG.md                    Consolidated full-product change record
 ```
 
 The optional Python browser companion is deliberately separate from the request path. The main application uses deterministic Playwright extraction because it is easier to constrain, test, and audit.
 
 ## Public-project boundaries
 
-This repository contains the working website-audit and competitor-research engine. It intentionally excludes authentication handlers, persistence schemas, deployment configuration, client data, private audit evidence, and mailbox integrations. The lifecycle experience is presented as a separate fictional product concept rather than as an implemented public integration.
+This repository contains the working website-audit and competitor-research engine. It intentionally excludes authentication handlers, persistence schemas, deployment configuration, client data, private audit evidence, and mailbox integrations. The lifecycle experience is now implemented in the full local product and documented with privacy-safe interface captures; its integration is still excluded from this public source distribution. Historical SVG concept assets are retained for reference, not as current product screenshots.
 
 ## Stack
 
